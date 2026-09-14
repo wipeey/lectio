@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lectio · Roadmap catholique de la Bible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Spectral:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nuit:#141b2e;        /* fond, nuit de veille */
+  --nuit-2:#1c2540;      /* panneaux */
+  --nuit-3:#28325a;      /* bordures */
+  --parchemin:#ece3cf;   /* texte clair */
+  --parchemin-doux:#b9b09a;
+  --or:#d9b45b;          /* or liturgique */
+  --or-clair:#f0d488;
+  --outremer:#6f8fd6;    /* bleu enluminure */
+  --outremer-clair:#a6bdf0;
+  --pourpre:#a86f8f;
+  --vert:#7fa676;
+  --rouge:#c96a5a;
+  --ombre:0 18px 50px -20px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+    radial-gradient(1200px 800px at 80% -10%, rgba(111,143,214,.10), transparent 60%),
+    radial-gradient(900px 700px at -10% 110%, rgba(217,180,91,.08), transparent 55%),
+    var(--nuit);
+  color:var(--parchemin);
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:18px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--or);color:var(--nuit)}
+a{color:var(--outremer-clair)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* ---------- En-tête ---------- */
+header.top{padding:64px 0 30px;text-align:center;position:relative}
+.eyebrow{font-family:'Spectral',serif;font-weight:300;letter-spacing:.42em;
+  text-transform:uppercase;font-size:12px;color:var(--or);margin:0 0 14px}
+h1.title{font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(46px,9vw,86px);line-height:.95;margin:0;letter-spacing:.5px}
+h1.title .drop{color:var(--or);font-style:italic}
+.subtitle{font-family:'Spectral',serif;font-weight:300;color:var(--parchemin-doux);
+  max-width:640px;margin:18px auto 0;font-size:17px}
+.rule{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--or),transparent);
+  margin:26px auto 0}
+
+/* ---------- Panneau objectif ---------- */
+.card{background:linear-gradient(180deg,var(--nuit-2),rgba(28,37,64,.6));
+  border:1px solid var(--nuit-3);border-radius:14px;box-shadow:var(--ombre)}
+.goal{margin:34px 0 10px;padding:26px 26px 30px}
+.goal h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;margin:0 0 4px}
+.goal .hint{color:var(--parchemin-doux);font-size:15px;margin:0 0 20px}
+.pace-row{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch}
+.pace{flex:1 1 150px;background:var(--nuit);border:1px solid var(--nuit-3);
+  border-radius:11px;padding:16px 14px;cursor:pointer;transition:.18s;text-align:left;
+  color:var(--parchemin);font-family:inherit}
+.pace:hover{border-color:var(--outremer);transform:translateY(-2px)}
+.pace.sel{border-color:var(--or);background:
+  linear-gradient(180deg,rgba(217,180,91,.14),rgba(217,180,91,.03))}
+.pace .big{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--or-clair);line-height:1}
+.pace .lbl{display:block;margin-top:6px;font-size:14px;color:var(--parchemin-doux)}
+.pace.sel .lbl{color:var(--parchemin)}
+.custom-row{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}
+.custom-row label{font-size:15px;color:var(--parchemin-doux)}
+.custom-row input{width:90px;background:var(--nuit);border:1px solid var(--nuit-3);
+  color:var(--parchemin);font-family:inherit;font-size:16px;padding:8px 10px;border-radius:8px}
+.custom-row input:focus{outline:2px solid var(--outremer);outline-offset:1px}
+.startline{margin-top:16px;font-size:15px;color:var(--parchemin-doux)}
+.startline input{background:var(--nuit);border:1px solid var(--nuit-3);color:var(--parchemin);
+  font-family:inherit;padding:7px 9px;border-radius:8px}
+
+/* ---------- Barre de stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.stat{padding:18px 16px;text-align:center}
+.stat .n{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--or-clair);line-height:1}
+.stat .k{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--parchemin-doux);margin-top:6px}
+.progress-outer{height:12px;background:var(--nuit);border:1px solid var(--nuit-3);
+  border-radius:20px;overflow:hidden;margin:6px 0 4px}
+.progress-inner{height:100%;background:linear-gradient(90deg,var(--or),var(--or-clair));
+  width:0;transition:width .6s cubic-bezier(.2,.8,.2,1);border-radius:20px}
+
+/* ---------- Aujourd'hui ---------- */
+.today{padding:0;overflow:hidden;margin:26px 0}
+.today .band{background:linear-gradient(100deg,rgba(217,180,91,.16),rgba(111,143,214,.10));
+  padding:22px 26px;border-bottom:1px solid var(--nuit-3);display:flex;
+  justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px}
+.today .band h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;margin:0}
+.today .band .date{font-family:'Spectral';font-weight:300;color:var(--parchemin-doux);font-size:15px}
+.today .body{padding:24px 26px}
+.pill{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  padding:4px 11px;border-radius:20px;border:1px solid;margin-bottom:12px}
+.pill.psalm{color:var(--outremer-clair);border-color:rgba(111,143,214,.5);background:rgba(111,143,214,.08)}
+.pill.read{color:var(--or-clair);border-color:rgba(217,180,91,.5);background:rgba(217,180,91,.08)}
+.assign{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;margin:2px 0 4px}
+.assign .rng{color:var(--outremer-clair)}
+.assign-note{font-size:15px;color:var(--parchemin-doux);font-style:italic;margin:4px 0 0}
+.today-block{padding:16px 0;border-top:1px dashed var(--nuit-3)}
+.today-block:first-of-type{border-top:none;padding-top:4px}
+.aelf{margin-top:6px;font-size:15px;color:var(--parchemin-doux)}
+.aelf .ref{color:var(--outremer-clair)}
+.btn{font-family:'Spectral',serif;font-weight:400;cursor:pointer;border-radius:9px;
+  padding:11px 20px;font-size:15px;letter-spacing:.03em;border:1px solid;transition:.16s;background:none}
+.btn-primary{background:var(--or);color:var(--nuit);border-color:var(--or);font-weight:600}
+.btn-primary:hover{background:var(--or-clair);border-color:var(--or-clair)}
+.btn-ghost{color:var(--parchemin);border-color:var(--nuit-3)}
+.btn-ghost:hover{border-color:var(--outremer);color:var(--outremer-clair)}
+.today-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;align-items:center}
+.catchup{font-size:14px;color:var(--parchemin-doux)}
+.catchup b{color:var(--rouge)}
+.skip-days{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.skip-days input{width:70px;background:var(--nuit);border:1px solid var(--nuit-3);
+  color:var(--parchemin);font-family:inherit;font-size:15px;padding:8px 10px;border-radius:8px}
+.btn[disabled]{opacity:.45;cursor:default;pointer-events:none}
+
+/* ---------- Vue d'ensemble ---------- */
+.section-h{display:flex;align-items:center;gap:16px;margin:44px 0 6px}
+.section-h h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;margin:0;white-space:nowrap}
+.section-h .line{height:1px;background:var(--nuit-3);flex:1}
+.section-sub{color:var(--parchemin-doux);margin:0 0 22px;font-size:16px}
+
+.phase{margin:22px 0;border:1px solid var(--nuit-3);border-radius:13px;overflow:hidden;background:var(--nuit-2)}
+.phase-head{padding:16px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;
+  border-left:5px solid var(--teinte,var(--or));user-select:none}
+.phase-head:hover{background:rgba(255,255,255,.02)}
+.phase-head .pname{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin:0}
+.phase-head .pdesc{font-size:14px;color:var(--parchemin-doux);margin:2px 0 0;font-style:italic}
+.phase-head .pcount{margin-left:auto;font-size:13px;color:var(--parchemin-doux);
+  letter-spacing:.08em;white-space:nowrap;text-align:right}
+.phase-head .chev{transition:.2s;color:var(--parchemin-doux);flex-shrink:0}
+.phase.open .chev{transform:rotate(90deg)}
+.phase-body{display:none;padding:6px 14px 14px}
+.phase.open .phase-body{display:block}
+
+.book{display:flex;align-items:center;gap:14px;padding:11px 10px;border-radius:9px;transition:.14s}
+.book:hover{background:rgba(255,255,255,.025)}
+.book + .book{border-top:1px solid rgba(255,255,255,.04)}
+.check{flex-shrink:0;width:26px;height:26px;border-radius:7px;border:1.5px solid var(--nuit-3);
+  background:var(--nuit);cursor:pointer;display:grid;place-items:center;transition:.16s}
+.check:hover{border-color:var(--or)}
+.check svg{width:15px;height:15px;stroke:var(--nuit);stroke-width:3.4;fill:none;
+  opacity:0;transform:scale(.4);transition:.18s}
+.book.done .check{background:var(--or);border-color:var(--or)}
+.book.done .check svg{opacity:1;transform:scale(1)}
+.book .bmeta{flex:1;min-width:0}
+.book .bname{font-size:18px;transition:.16s}
+.book.done .bname{color:var(--parchemin-doux);text-decoration:line-through;text-decoration-color:rgba(217,180,91,.5)}
+.book .bsub{font-size:13px;color:var(--parchemin-doux);margin-top:1px}
+.book .bnote{font-size:13px;color:var(--outremer-clair);font-style:italic;margin-top:2px;display:none}
+.book.showdetail .bnote{display:block}
+.tags{display:flex;gap:6px;flex-shrink:0}
+.tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:14px;border:1px solid}
+.tag.lv1{color:var(--vert);border-color:rgba(127,166,118,.4)}
+.tag.lv2{color:var(--outremer-clair);border-color:rgba(111,143,214,.4)}
+.tag.lv3{color:var(--pourpre);border-color:rgba(168,111,143,.45)}
+.tag.skim{color:var(--or-clair);border-color:rgba(217,180,91,.45)}
+
+/* fil rouge psaumes */
+.psalm-thread{margin:22px 0;padding:20px 22px;border:1px dashed rgba(111,143,214,.4);
+  border-radius:13px;background:linear-gradient(180deg,rgba(111,143,214,.07),transparent)}
+.psalm-thread h3{font-family:'Cormorant Garamond',serif;font-size:22px;margin:0 0 6px;color:var(--outremer-clair)}
+.psalm-thread p{margin:0 0 14px;font-size:15px;color:var(--parchemin-doux)}
+.psalm-bar{height:10px;background:var(--nuit);border:1px solid var(--nuit-3);border-radius:20px;overflow:hidden}
+.psalm-bar > div{height:100%;background:linear-gradient(90deg,var(--outremer),var(--outremer-clair));width:0;transition:.6s}
+.psalm-count{font-size:14px;color:var(--parchemin-doux);margin-top:8px}
+
+footer{text-align:center;padding:50px 0 40px;color:var(--parchemin-doux);font-size:14px;font-family:'Spectral';font-weight:300}
+footer .rule{margin-bottom:20px}
+.reset{background:none;border:none;color:var(--parchemin-doux);text-decoration:underline;
+  cursor:pointer;font-family:inherit;font-size:14px}
+.reset:hover{color:var(--rouge)}
+.save-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.save-actions .btn{font-size:14px;padding:9px 18px}
+
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(120px);
+  background:var(--or);color:var(--nuit);padding:13px 24px;border-radius:11px;font-weight:600;
+  font-family:'Spectral';box-shadow:var(--ombre);transition:.35s cubic-bezier(.2,.9,.2,1);z-index:50}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@media(max-width:620px){
+  body{font-size:17px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .today .band{flex-direction:column;gap:2px}
+  .phase-head .pcount{display:none}
+  .tags{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Parcours de lecture · 73 livres</p>
+    <h1 class="title"><span class="drop">L</span>ectio</h1>
+    <p class="subtitle">Une traversée ordonnée de toute la Bible catholique. On part du Christ, on bâtit les fondations, puis on remonte l'histoire du salut — un psaume médité chaque jour, du premier au dernier.</p>
+    <div class="rule"></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- OBJECTIF -->
+  <section class="card goal">
+    <h2>Fixer l'objectif</h2>
+    <p class="hint">Choisissez un rythme. Le parcours répartit les 1&nbsp;178 chapitres et les 150 psaumes sur la durée choisie.</p>
+    <div class="pace-row" id="paceRow"></div>
+    <div class="custom-row">
+      <label for="customDays">Ou une durée sur mesure :</label>
+      <input id="customDays" type="number" min="30" max="1825" placeholder="jours">
+      <span style="color:var(--parchemin-doux);font-size:14px">jours</span>
+    </div>
+    <div class="startline">
+      Vous en êtes au jour <input id="dayInput" type="number" min="1"> sur le parcours
+      <button class="btn btn-ghost" id="dayGoBtn" style="padding:6px 14px;font-size:14px;margin-left:8px">Aller à ce jour</button>
+      <span style="display:block;margin-top:6px;font-size:13px">Utile pour reprendre en cours de route ou sauter directement au milieu du parcours.</span>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="card stat"><div class="n" id="stDay">—</div><div class="k">Jour du parcours</div></div>
+    <div class="card stat"><div class="n" id="stBooks">0<span style="font-size:20px;color:var(--parchemin-doux)">/73</span></div><div class="k">Livres achevés</div></div>
+    <div class="card stat"><div class="n" id="stPct">0%</div><div class="k">Progression</div></div>
+    <div class="card stat"><div class="n" id="stPace">—</div><div class="k">Ch. par jour</div></div>
+  </section>
+  <div class="progress-outer"><div class="progress-inner" id="progBar"></div></div>
+
+  <!-- AUJOURD'HUI -->
+  <section class="card today">
+    <div class="band">
+      <h2>À lire aujourd'hui</h2>
+      <span class="date" id="todayDate"></span>
+    </div>
+    <div class="body" id="todayBody"></div>
+  </section>
+
+  <!-- FIL ROUGE PSAUMES -->
+  <section class="psalm-thread">
+    <h3>Le fil rouge des Psaumes</h3>
+    <p>Le 73<sup>e</sup> livre ne se lit pas d'un bloc : un psaume vous accompagne chaque jour, du début à la fin du parcours. La prière d'Israël devient la vôtre.</p>
+    <div class="psalm-bar"><div id="psalmBar"></div></div>
+    <div class="psalm-count" id="psalmCount">Psaume 1 sur 150</div>
+  </section>
+
+  <!-- VUE D'ENSEMBLE -->
+  <div class="section-h"><h2>Vue d'ensemble</h2><div class="line"></div></div>
+  <p class="section-sub">Huit étapes, du plus accessible au plus exigeant. Cochez un livre pour le marquer comme lu ; touchez une étape pour la déplier.</p>
+  <div id="phases"></div>
+
+</main>
+
+<footer class="wrap">
+  <div class="rule"></div>
+  <p>« Ta parole est une lampe pour mes pas. » — Psaume 118 (119), 105</p>
+  <div class="save-actions">
+    <button class="btn btn-ghost" id="exportBtn">Exporter ma progression</button>
+    <button class="btn btn-ghost" id="importBtn">Importer</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden>
+  </div>
+  <p style="margin-top:20px"><button class="reset" id="resetBtn">Tout réinitialiser</button></p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
