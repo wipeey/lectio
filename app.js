@@ -176,7 +176,7 @@ function renderStats() {
   const dayIdx = currentDayIndex();
 
   $('#stDay').textContent = Math.min(dayIdx + 1, targetDays());
-  $('#stBooks').innerHTML = booksDone + '<span style="font-size:20px;color:var(--parchemin-doux)">/73</span>';
+  $('#stBooks').innerHTML = booksDone + '<span style="font-size:20px;color:var(--encre-douce)">/73</span>';
   $('#stPct').textContent = pct + '%';
   $('#stPace').textContent = (Math.round(TOTAL_CH / targetDays() * 10) / 10);
   $('#progBar').style.width = pct + '%';
@@ -205,7 +205,7 @@ function renderToday() {
   // bloc psaume du jour
   html += `<div class="today-block">
     <span class="pill psalm">Méditation du jour</span>
-    <div class="assign">Psaume <span class="rng">${psalm}</span> <span style="color:var(--parchemin-doux);font-size:18px">· le fil rouge</span></div>
+    <div class="assign">Psaume <span class="rng">${psalm}</span> <span style="color:var(--encre-douce);font-size:18px">· le fil rouge</span></div>
     <div class="aelf" id="aelfBox">Lectures du jour dans l'Église : <span class="ref">chargement…</span></div>
   </div>`;
 
@@ -348,7 +348,7 @@ async function fetchAELF() {
       ? `Aujourd'hui dans la liturgie : <span class="ref">${out.join(' · ')}</span>`
       : `Lectures du jour disponibles sur <a href="https://www.aelf.org" target="_blank" rel="noopener">aelf.org</a>.`;
   } catch (e) {
-    box.innerHTML = `Lectures du jour dans l'Église : <a href="https://www.aelf.org" target="_blank" rel="noopener">aelf.org</a> <span style="color:var(--parchemin-doux)">(hors-ligne ici, actif dans votre navigateur)</span>`;
+    box.innerHTML = `Lectures du jour dans l'Église : <a href="https://www.aelf.org" target="_blank" rel="noopener">aelf.org</a> <span style="color:var(--encre-douce)">(hors-ligne ici, actif dans votre navigateur)</span>`;
   }
 }
 
